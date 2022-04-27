@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:22:44 by mkarim            #+#    #+#             */
-/*   Updated: 2022/04/25 17:04:29 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/04/25 21:48:56 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	main(int argc, char **argv)
 	if (!fract)
 		return (0);
 	ft_init(fract);
-	// fract->mlx = mlx_init();
-	// fract->mlx_win = mlx_new_window(fract->mlx, WIN_WIDTH, WIN_HEIGHT, "SKKET's Fractol");
 	if (argc == 2)
 	{
 		if (argv[1][0] == 'm' || argv[1][0] == 'j')
@@ -30,4 +28,5 @@ int	main(int argc, char **argv)
 			return (0);
 		}
 	}
+	mlx_loop(fract->mlx);
 }
