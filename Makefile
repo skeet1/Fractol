@@ -6,7 +6,7 @@
 #    By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/25 14:24:51 by mkarim            #+#    #+#              #
-#    Updated: 2022/04/25 14:41:47 by mkarim           ###   ########.fr        #
+#    Updated: 2022/04/25 21:44:56 by mkarim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
+COMP = -lmlx -framework OpenGL -framework AppKit
+
 all : $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(FLAGS) $(COMP) $(OBJ) -o $(NAME)
 	@echo "Compilation of fractol: \033[1;32mOK\033[m"
 
 %.o : %.c

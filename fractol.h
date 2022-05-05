@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:23:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/04/25 14:48:07 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/04/25 21:46:40 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef	struct s_fractol
 {
 	void	*mlx;
 	void	*mlx_win;
+	void	*img;
 }			t_fractol;
 
 void	ft_init(t_fractol *fract);
