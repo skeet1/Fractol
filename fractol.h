@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:23:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/04/25 21:46:40 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/07 16:35:28 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,21 @@ typedef	struct s_fractol
 	void	*img;
 }			t_fractol;
 
+typedef	struct s_mandelbrot
+{
+	double	row;
+	double	col;
+	double	max;
+	double	c_re;
+	double	c_im;
+	double	x_new;
+	double	x;
+	double	y;
+	double	iteration;
+}			t_mandelbrot;
+
+
 void	ft_init(t_fractol *fract);
+void	ft_mandelbrot(t_fractol *fract);
 
 #endif
