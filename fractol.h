@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:23:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/05/07 16:35:28 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/08 13:35:58 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ typedef	struct s_mandelbrot
 
 void	ft_init(t_fractol *fract);
 void	ft_mandelbrot(t_fractol *fract);
+void	ft_julia(t_fractol *fract);
 
 #endif

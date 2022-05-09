@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 16:30:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/05/07 18:14:32 by mkarim           ###   ########.fr       */
+/*   Created: 2022/05/08 13:32:46 by mkarim            #+#    #+#             */
+/*   Updated: 2022/05/09 10:42:37 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_mandelbrot(t_fractol *fract)
+void	ft_julia(t_fractol *fract)
 {
 	t_mandelbrot *m;
 
@@ -28,6 +28,8 @@ void	ft_mandelbrot(t_fractol *fract)
 		{
 			m->c_re = (m->col - WIN_WIDTH/2.0)*4.0/WIN_WIDTH;
 			m->c_im = (m->row - WIN_HEIGHT/2.0)*4.0/WIN_WIDTH;
+			// m->c_re = -1.476;
+			// m->c_im = 0.5;
 			m->x = 0;
 			m->y = 0;
 			m->iteration = 0;

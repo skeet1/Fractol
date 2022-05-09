@@ -6,7 +6,7 @@
 #    By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/25 14:24:51 by mkarim            #+#    #+#              #
-#    Updated: 2022/05/07 16:35:57 by mkarim           ###   ########.fr        #
+#    Updated: 2022/05/08 13:37:04 by mkarim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fractol
 
 HEADER = fractol.h
 
-SRC = fractol.c ft_utils.c mandelbrot.c
+SRC = fractol.c ft_utils.c mandelbrot.c julia.c
 
 OBJ = $(SRC:.c=.o)
 
