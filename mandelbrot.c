@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 16:30:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/05/07 18:14:32 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/12 09:46:06 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ void	ft_mandelbrot(t_fractol *fract)
 	m = (t_mandelbrot *)malloc(sizeof(t_mandelbrot));
 	if (!m)
 		return ;
-	m->max = 500;
+	m->max = 50;
 	m->row = 0;
+	m->scale_x = (2.0/WIN_WIDTH);
+	m->scale_y = (2.0/WIN_WIDTH);
 	while (m->row < WIN_HEIGHT)
 	{
 		m->col = 0;
 		while (m->col < WIN_WIDTH)
 		{
-			m->c_re = (m->col - WIN_WIDTH/2.0)*4.0/WIN_WIDTH;
-			m->c_im = (m->row - WIN_HEIGHT/2.0)*4.0/WIN_WIDTH;
+			m->c_re = (m->col * m->scale_x) - 2.0 + 1.0;
+			m->c_im = (m->row * m->scale_y) - 2.0 + 1.0;
 			m->x = 0;
 			m->y = 0;
 			m->iteration = 0;
@@ -37,7 +39,7 @@ void	ft_mandelbrot(t_fractol *fract)
 				m->x = m->x_new;
 				m->iteration++;
 			}
-			if (m->iteration < m->max) mlx_pixel_put(fract->mlx, fract->mlx_win, m->col, m->row, 0x00FFFFFF);
+			if (m->iteration < m->max) mlx_pixel_put(fract->mlx, fract->mlx_win, m->col, m->row, m->iteration * 3 * 0x00FFFFFF);
 			else mlx_pixel_put(fract->mlx, fract->mlx_win, m->col, m->row, 0x00000000);
 			m->col++;
 		}

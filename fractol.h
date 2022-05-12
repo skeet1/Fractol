@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:23:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/05/08 13:35:58 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:02:20 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define WIN_WIDTH 1000
+# define WIN_WIDTH 800
 # define WIN_HEIGHT 800
 
 typedef	struct s_data
@@ -48,6 +48,8 @@ typedef	struct s_mandelbrot
 	double	x;
 	double	y;
 	double	iteration;
+	double	scale_x;
+	double	scale_y;
 }			t_mandelbrot;
 
 
