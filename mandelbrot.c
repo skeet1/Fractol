@@ -6,43 +6,68 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 16:30:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/05/12 09:46:06 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/12 14:37:00 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_mandelbrot(t_fractol *fract)
+int	handle(int keycode, int x, int y, t_all *a)
 {
-	t_mandelbrot *m;
-
-	m = (t_mandelbrot *)malloc(sizeof(t_mandelbrot));
-	if (!m)
-		return ;
-	m->max = 50;
-	m->row = 0;
-	m->scale_x = (2.0/WIN_WIDTH);
-	m->scale_y = (2.0/WIN_WIDTH);
-	while (m->row < WIN_HEIGHT)
+	x = y;
+	if (keycode == 5)
 	{
-		m->col = 0;
-		while (m->col < WIN_WIDTH)
+		a->mm->z_x *= 0.9;
+		a->mm->z_y *= 0.9;
+		a->mm->max += 4;
+	}
+	else if (keycode == 4)
+	{
+		a->mm->z_x *= 1.1;
+		a->mm->z_y *= 1.1;
+		a->mm->max -= 1;
+	}
+	ft_mandelbrot(a);
+	return (0);
+}
+
+int	handle_key(int keycode, int x, int y, t_all *a)
+{
+	x = y;
+	(void)a;
+	if (keycode == 53)
+	{
+		exit(1);
+	}
+	return (0);
+}
+
+void	ft_mandelbrot(t_all *a)
+{
+	a->mm->max = 50;
+	a->mm->row = 0;
+	a->mm->scale_x = (a->mm->z_x/WIN_WIDTH);
+	a->mm->scale_y = (a->mm->z_y/WIN_WIDTH);
+	while (a->mm->row < WIN_HEIGHT)
+	{
+		a->mm->col = 0;
+		while (a->mm->col < WIN_WIDTH)
 		{
-			m->c_re = (m->col * m->scale_x) - 2.0 + 1.0;
-			m->c_im = (m->row * m->scale_y) - 2.0 + 1.0;
-			m->x = 0;
-			m->y = 0;
-			m->iteration = 0;
-			while (m->x*m->x+m->y*m->y <= 4 && m->iteration < m->max) {
-				m->x_new = m->x*m->x - m->y*m->y + m->c_re;
-				m->y = 2*m->x*m->y + m->c_im;
-				m->x = m->x_new;
-				m->iteration++;
+			a->mm->c_re = (a->mm->col * a->mm->scale_x) - 2.0 + (4.0 - a->mm->z_x) / 2.0;
+			a->mm->c_im = (a->mm->row * a->mm->scale_y) - 2.0 + (4.0 - a->mm->z_y) / 2.0;
+			a->mm->x = 0;
+			a->mm->y = 0;
+			a->mm->iteration = 0;
+			while (a->mm->x*a->mm->x+a->mm->y*a->mm->y <= 4 && a->mm->iteration < a->mm->max) {
+				a->mm->x_new = a->mm->x*a->mm->x - a->mm->y*a->mm->y + a->mm->c_re;
+				a->mm->y = 2*a->mm->x*a->mm->y + a->mm->c_im;
+				a->mm->x = a->mm->x_new;
+				a->mm->iteration++;
 			}
-			if (m->iteration < m->max) mlx_pixel_put(fract->mlx, fract->mlx_win, m->col, m->row, m->iteration * 3 * 0x00FFFFFF);
-			else mlx_pixel_put(fract->mlx, fract->mlx_win, m->col, m->row, 0x00000000);
-			m->col++;
+			if (a->mm->iteration < a->mm->max) mlx_pixel_put(a->fractt->mlx, a->fractt->mlx_win, a->mm->col, a->mm->row, a->mm->iteration * 3 * 0x00FFFFFF);
+			else mlx_pixel_put(a->fractt->mlx, a->fractt->mlx_win, a->mm->col, a->mm->row, 0x00000000);
+			a->mm->col++;
 		}
-		m->row++;
+		a->mm->row++;
 	}
 }

@@ -6,15 +6,16 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:34:35 by mkarim            #+#    #+#             */
-/*   Updated: 2022/04/25 21:48:35 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/13 07:37:46 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_init(t_fractol *fract)
+void	ft_init(t_all *a)
 {
-	fract->mlx = mlx_init();
-	fract->mlx_win = mlx_new_window(fract->mlx, WIN_WIDTH, WIN_HEIGHT, "SKKET's Fractol");
-	fract->img = mlx_new_image(fract->mlx, WIN_WIDTH, WIN_HEIGHT);
+	a->fractt->mlx = mlx_init();
+	a->fractt->mlx_win = mlx_new_window(a->fractt->mlx, WIN_WIDTH, WIN_HEIGHT, "SKKET's Fractol");
+	a->fractt->img = mlx_new_image(a->fractt->mlx, WIN_WIDTH, WIN_HEIGHT);
+	a->fractt->addr = mlx_get_data_addr(a->fractt->mlx_win, a->fractt->bpp, a->fractt->line_length, a->fractt->endian);
 }
