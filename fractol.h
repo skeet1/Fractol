@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:23:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/05/12 18:56:06 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/13 12:23:11 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 800
 
-typedef	struct s_fractol
+typedef struct s_fractol
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -32,7 +32,7 @@ typedef	struct s_fractol
 	int		endian;
 }			t_fractol;
 
-typedef	struct s_mandelbrot
+typedef struct s_mandelbrot
 {
 	double	row;
 	double	col;
@@ -51,18 +51,18 @@ typedef	struct s_mandelbrot
 	int		pos;
 }			t_mandelbrot;
 
-typedef	struct s_all
+typedef struct s_all
 {
-	t_fractol	*fractt;
-	t_mandelbrot *mm;
+	t_fractol		*fractt;
+	t_mandelbrot	*mm;
 }			t_all;
 
-
-void	ft_init(t_all *a);
+void	ft_init(t_all **a);
 void	ft_mandelbrot(t_all *a);
 void	ft_julia(t_all *a);
 int		handle(int keycode, int x, int y, t_all *a);
 int		handle_key(int keycode, int x, int y, t_all *a);
 int		ft_handle_mouse(int x, int y, t_all *a);
 int		handle_julia(int keycode, int x, int y, t_all *a);
+void	img_pix_put(t_fractol *img, int x, int y, unsigned int color);
 #endif

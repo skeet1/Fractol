@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 16:30:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/05/12 14:37:00 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/13 14:32:20 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	handle(int keycode, int x, int y, t_all *a)
 		a->mm->z_y *= 1.1;
 		a->mm->max -= 1;
 	}
+	mlx_clear_window(a->fractt->mlx, a->fractt->mlx_win);
 	ft_mandelbrot(a);
 	return (0);
 }
@@ -36,10 +37,16 @@ int	handle_key(int keycode, int x, int y, t_all *a)
 	x = y;
 	(void)a;
 	if (keycode == 53)
-	{
 		exit(1);
-	}
 	return (0);
+}
+
+void	img_pix_put(t_fractol *img, int x, int y, unsigned int color)
+{
+	char	*pix;
+
+	pix = img->addr + ((y * img->line_length) + x * (img->bpp / 8));
+	*(unsigned int *)pix = color;
 }
 
 void	ft_mandelbrot(t_all *a)
@@ -64,10 +71,11 @@ void	ft_mandelbrot(t_all *a)
 				a->mm->x = a->mm->x_new;
 				a->mm->iteration++;
 			}
-			if (a->mm->iteration < a->mm->max) mlx_pixel_put(a->fractt->mlx, a->fractt->mlx_win, a->mm->col, a->mm->row, a->mm->iteration * 3 * 0x00FFFFFF);
-			else mlx_pixel_put(a->fractt->mlx, a->fractt->mlx_win, a->mm->col, a->mm->row, 0x00000000);
+			if (a->mm->iteration < a->mm->max) img_pix_put(a->fractt, a->mm->col, a->mm->row, a->mm->iteration * 3 * 0x00FFFFFF);
+			else img_pix_put(a->fractt, a->mm->col, a->mm->row, 0x00000000);
 			a->mm->col++;
 		}
 		a->mm->row++;
 	}
+	mlx_put_image_to_window(a->fractt->mlx, a->fractt->mlx_win, a->fractt->img, 0, 0);
 }

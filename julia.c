@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 13:32:46 by mkarim            #+#    #+#             */
-/*   Updated: 2022/05/12 18:57:27 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/13 14:36:44 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	handle_julia(int keycode, int x, int y, t_all *a)
 	}
 	else if (keycode == 1)
 		a->mm->pos *= -1;
+	mlx_clear_window(a->fractt->mlx, a->fractt->mlx_win);
 	ft_julia(a);
 	return (0);
 }
@@ -56,8 +57,6 @@ void	ft_julia(t_all *a)
 		{
 			a->mm->x = (a->mm->col * a->mm->scale_x) - 2.0 + (4.0 - a->mm->z_x) / 2.0;
 			a->mm->y = (a->mm->row * a->mm->scale_y) - 2.0 + (4.0 - a->mm->z_y) / 2.0;
-			// a->mm->c_re = 0.284;
-			// a->mm->c_im = 0.01;
 			a->mm->iteration = 0;
 			while (a->mm->iteration < a->mm->max) {
 				a->mm->x_new = a->mm->x*a->mm->x - a->mm->y*a->mm->y + a->mm->c_re;
@@ -67,10 +66,10 @@ void	ft_julia(t_all *a)
 				if (a->mm->x*a->mm->x+a->mm->y*a->mm->y > 4)
 					break;
 			}
-			if (a->mm->iteration < a->mm->max) mlx_pixel_put(a->fractt->mlx, a->fractt->mlx_win, a->mm->col, a->mm->row, a->mm->iteration * 0x00ffddcc);
-			// else mlx_pixel_put(a->fractt->mlx, a->fractt->mlx_win, a->mm->col, a->mm->row, 0x00000000);
+			if (a->mm->iteration < a->mm->max) img_pix_put(a->fractt, a->mm->col, a->mm->row, a->mm->iteration * 0x00ffddcc);
 			a->mm->col++;
 		}
 		a->mm->row++;
 	}
+	mlx_put_image_to_window(a->fractt->mlx, a->fractt->mlx_win, a->fractt->img, 0, 0);
 }
