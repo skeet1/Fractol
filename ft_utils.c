@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:34:35 by mkarim            #+#    #+#             */
-/*   Updated: 2022/05/13 12:26:45 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/05/13 15:11:41 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	ft_init(t_all **a)
 			WIN_HEIGHT, "SKKET's Fractol");
 	(*a)->fractt->img = mlx_new_image((*a)->fractt->mlx, WIN_WIDTH, WIN_HEIGHT);
 	(*a)->fractt->addr = mlx_get_data_addr((*a)->fractt->img,
-			&(*a)->fractt->bpp, &(*a)->fractt->line_length, &(*a)->fractt->endian);
+			&(*a)->fractt->bpp, &(*a)->fractt->line_length,
+			&(*a)->fractt->endian);
 }
